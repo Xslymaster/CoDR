@@ -1,0 +1,127 @@
+-- Chest on Demand Revamped --
+     
+--Version information and legal stuff --
+     
+--[[ This is CoDR Version 0.3. This code is made by Xslymaster. You have the right to modify the code as you see fit. You cannot claim this code as your own.
+You may use this in your projects anyway you see fit. You may not re-upload this code.]]
+
+-- Thanks to give --
+--[[Encreedem for helping me fix up the code a bit
+Dan200 for making computercraft
+Lua for the programing language
+Markus Perrson for making minecraft
+NDF Jay and Nitrogen Fingers for getting me into coding
+My mom and dad for bringing me into this world]]
+     
+-- local functions --
+     
+function roomFront()
+        rs.setOutput("right", true)
+        print("Please go to the front room and retreive or put your stuff in the chest.")
+        sleep(1)
+        end
+     
+function roomBack()
+        rs.setOutput("left", true)
+        print("Please go to the back room and retreive or put your stuff in the chest.")
+        sleep(1)
+        end
+     
+function roomStorage()
+        rs.setOutput("bottom", true)
+        print("Please go to the storage room and retreive or put your stuff away.")
+        sleep(1)        
+        end
+    
+function sendBack()
+     local finished = false
+while not finished do
+  input = read()
+     print("Select your choice")
+     print("___________________________")
+     print("|Your choices             |")
+     print("| [1] Front Room = right  |")
+     print("| [2] Back Room = left    |")
+     print("| [3] Storage = down      |")
+     print("| [4] Quit                |")
+     print("|_________________________|")
+     local input = read()
+     while true do
+        sleep(0)
+        if input == "1" then
+            rs.setOutput("right", false)
+        local input = read()
+        elseif input == "2" then
+            rs.setOutput("left", false)
+        local input = read()
+        elseif input == "3" then
+            rs.setOutput("bottom", false)
+        elseif (input == "4") then
+            finished = true
+            shell.run("CoDR")
+
+      end
+   end
+end
+end
+     
+function printBox()
+        term.clear()
+        term.setCursorPos(1,1)
+        print("_____________________________________________")
+        print("|Please Select a room to send the chest to  |")
+        print("| [1] Front Room = right                    |")
+        print("|                                           |")
+        print("| [2] Back Room = left                      |")
+        print("|                                           |")
+        print("| [3] Storage = down                        |")
+        print("|                                           |")
+        print("| [4] Send Back                             |")
+        print("|                                           |")
+        print("| [5] Run CoDR Extras   BROKEN              |")
+        print("|                                           |")
+        print("|___________________________________________|")
+     end
+     
+function codrExtras()
+        print("Would you like to install CoDRExtras?Y/N")
+        local input = read()
+        if input == "Y" then
+            shell.run("pastebin get dummycode CoDRExtras")
+        elseif input == "N" then
+            print("Thank you for using CoDR")
+        else
+            print("Input not Recognized")
+     end
+end
+    
+-- Code --
+term.clear()
+term.setCursorPos(1,1)
+term.setTextColor(colors.lime)
+print(" ____,  ____,  ____,  ____, ")
+print("(-/    (-/  \\ (-|  \\ (-|__) ")
+print(" _\\__,  _\\__/, _|__/  _|  \\,")
+print("(      (      (      (      ")
+term.setTextColor(colors.white)
+sleep(1)
+print("Welcome to CoDR or Chest on Demand Revamped")
+sleep(2)
+term.clear()
+while true do
+  sleep(0)
+  printBox()
+  input = read()
+  if input == "1" then
+    roomFront()
+  elseif input == "2" then
+    roomBack()  
+  elseif input == "3" then
+    roomStorage()  
+  elseif input == "4" then
+    sendBack()
+    break
+  elseif input == "5" then
+      codrExtras()
+   end
+end
